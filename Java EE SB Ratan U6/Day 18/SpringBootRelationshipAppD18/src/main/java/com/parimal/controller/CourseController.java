@@ -11,6 +11,7 @@ import com.parimal.model.Course;
 import com.parimal.service.CourseServiceDAOImpl;
 
 @RestController
+//@RequestMapping("/course")
 public class CourseController
 {
 	@Autowired

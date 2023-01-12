@@ -28,6 +28,13 @@ public class Product
 		this.price = price;
 	}
 
+	public Product(String pname, int price)
+	{
+		super();
+		this.pname = pname;
+		this.price = price;
+	}
+
 	public Product()
 	{
 		super();

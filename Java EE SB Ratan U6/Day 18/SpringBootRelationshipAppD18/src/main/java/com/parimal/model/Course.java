@@ -20,8 +20,21 @@ public class Course
 	private String courseName;
 	private Integer fee;
 
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "courseSet")
-	private Set<Student> studentSet = new HashSet<>();
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "courseset")
+	private Set<Student> studentset = new HashSet<>();
+
+	public Course()
+	{
+
+	}
+
+	public Course(String courseName, Integer fee, Set<Student> studentset)
+	{
+		super();
+		this.courseName = courseName;
+		this.fee = fee;
+		this.studentset = studentset;
+	}
 
 	@Override
 	public int hashCode()
@@ -70,14 +83,14 @@ public class Course
 		this.fee = fee;
 	}
 
-	public Set<Student> getStudentSet()
+	public Set<Student> getStudentset()
 	{
-		return studentSet;
+		return studentset;
 	}
 
-	public void setStudentSet(Set<Student> studentSet)
+	public void setStudentset(Set<Student> studentset)
 	{
-		this.studentSet = studentSet;
+		this.studentset = studentset;
 	}
 
 }

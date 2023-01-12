@@ -30,7 +30,21 @@ public class Student
 
 	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.ALL)
-	private Set<Course> courseSet = new HashSet<>();
+	private Set<Course> courseset = new HashSet<>();
+
+	public Student()
+	{
+		// TODO Auto-generated constructor stub
+	}
+
+	public Student(String name, Integer marks, Address address, Set<Course> courseset)
+	{
+		super();
+		this.name = name;
+		this.marks = marks;
+		this.address = address;
+		this.courseset = courseset;
+	}
 
 	@Override
 	public int hashCode()
@@ -89,20 +103,14 @@ public class Student
 		this.address = address;
 	}
 
-	public Set<Course> getCourseSet()
+	public Set<Course> getCourseset()
 	{
-		return courseSet;
+		return courseset;
 	}
 
-	public void setCourseSet(Set<Course> courseSet)
+	public void setCourseset(Set<Course> courseset)
 	{
-		this.courseSet = courseSet;
-	}
-
-	@Override
-	public String toString()
-	{
-		return "Student [roll=" + roll + ", name=" + name + ", marks=" + marks + ", address=" + address + "]";
+		this.courseset = courseset;
 	}
 
 }

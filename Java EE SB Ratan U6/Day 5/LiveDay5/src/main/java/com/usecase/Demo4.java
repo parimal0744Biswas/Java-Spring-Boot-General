@@ -12,7 +12,7 @@ public class Demo4
 {
 	public static void main(String[] args)
 	{
-		EntityManager em1 = EMUtil.proviEntityManager();
+		EntityManager em1 = EMUtil.provideEntityManager();
 
 		Employee2 emp = em1.find(Employee2.class, 1);
 

@@ -10,7 +10,7 @@ public class Demo2
 {
 	public static void main(String[] args)
 	{
-		EntityManager em1 = EMUtil.proviEntityManager();
+		EntityManager em1 = EMUtil.provideEntityManager();
 
 		Employee2 employee = new Employee2();
 		employee.setName("Buro");

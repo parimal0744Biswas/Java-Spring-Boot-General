@@ -52,7 +52,6 @@ public class LoginServiceDaoImpl implements LoginServiceDao
 
 			return currentUserSession.toString();
 		}
-
 		else
 		{
 			throw new LoginException("Please Enter Valid Password");
@@ -62,8 +61,16 @@ public class LoginServiceDaoImpl implements LoginServiceDao
 	@Override
 	public String logOutFromAccount(String key) throws LoginException
 	{
-		// TODO Auto-generated method stub
-		return null;
+		CurrentUserSession validSession = cuSession.findByUuid(key);
+
+		if (validSession == null)
+		{
+			throw new LoginException("User Not LogedIn with this number");
+		}
+
+		cuSession.delete(validSession);
+
+		return "Loged Out...";
 	}
 
 }

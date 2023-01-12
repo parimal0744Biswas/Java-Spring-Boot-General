@@ -10,4 +10,5 @@
 	<bean id="service" class="com.dao.ServiceBean" autowire="byName"/>
 	
 	<bean id="pb" class="com.dao.PresentationBean"  autowire="byName"/>
+	
 </beans>

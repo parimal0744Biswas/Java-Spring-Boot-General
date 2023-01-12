@@ -10,7 +10,7 @@ import javax.persistence.Id;
 public class Student
 {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int roll;
 
 	private String name;
@@ -21,6 +21,13 @@ public class Student
 	{
 		super();
 		this.roll = roll;
+		this.name = name;
+		this.marks = marks;
+	}
+
+	public Student(String name, int marks)
+	{
+		super();
 		this.name = name;
 		this.marks = marks;
 	}

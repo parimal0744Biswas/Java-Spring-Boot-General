@@ -10,12 +10,16 @@ public class Demo1
 {
 	public static void main(String[] args)
 	{
-		EntityManager em1 = EMUtil.proviEntityManager();
+		EntityManager em1 = EMUtil.provideEntityManager();
 
 		Employee employee = new Employee();
+
 		employee.setName("Buro");
+
 		employee.setSalary(8000);
+
 		employee.setHomeAddress(new Address("WB", "HWH", "711107"));
+
 		employee.setOfficeaddress(new Address("KA", "BLR", "33520"));
 
 		em1.getTransaction().begin();

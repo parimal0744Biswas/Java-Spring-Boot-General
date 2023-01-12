@@ -6,16 +6,17 @@ import javax.persistence.Persistence;
 
 public class EMUtil
 {
-	private static EntityManagerFactory emf1;
+
+	private static EntityManagerFactory emf;
+
 	static
 	{
-		emf1 = Persistence.createEntityManagerFactory("mismatchUnit");
+		emf = Persistence.createEntityManagerFactory("mismatchUnit");
 	}
 
-	public static EntityManager proviEntityManager()
+	public static EntityManager provideEntityManager()
 	{
-		EntityManager em1 = emf1.createEntityManager();
-
-		return em1;
+		return emf.createEntityManager();
 	}
+
 }

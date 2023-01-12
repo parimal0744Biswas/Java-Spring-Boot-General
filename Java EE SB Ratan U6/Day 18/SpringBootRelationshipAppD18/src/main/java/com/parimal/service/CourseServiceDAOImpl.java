@@ -18,11 +18,12 @@ public class CourseServiceDAOImpl implements CourseServiceDAO
 	@Override
 	public Course registerNewCourse(Course course)
 	{
-		Set<Student> students = course.getStudentSet();
+		Set<Student> students = course.getStudentset();
 
-		for (Student studentElem : students)
+		for (Student elem : students)
 		{
-			studentElem.getCourseSet().add(course);
+			// associate each student with course
+			elem.getCourseset().add(course);
 		}
 
 		return cRepoDao.save(course);
