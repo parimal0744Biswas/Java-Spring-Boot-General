@@ -4,4 +4,5 @@
     <fullyQualifiedTypeName name="com.parimal.model.Student"/>
     <fullyQualifiedTypeName name="com.parimal.model.Course"/>
     <fullyQualifiedTypeName name="com.parimal.model.Customer"/>
+    <fullyQualifiedTypeName name="springfox.documentation.swagger2.annotations.EnableSwagger2"/>
 </qualifiedTypeNameHistroy>
