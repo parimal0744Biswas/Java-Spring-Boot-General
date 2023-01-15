@@ -9,6 +9,4 @@ import com.parimal.model.Student;
 public interface StudentDao extends JpaRepository<Student, Integer>
 {
 
-	// @Query("alter table b1 add foreign key(bid) references a1(id) on delete set
-	// null")
 }

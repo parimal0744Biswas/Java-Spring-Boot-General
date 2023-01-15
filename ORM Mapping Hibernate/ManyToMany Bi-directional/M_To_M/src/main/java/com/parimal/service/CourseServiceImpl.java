@@ -45,16 +45,26 @@ public class CourseServiceImpl implements CourseService
 	@Override
 	public Course deleteCourse(String cname) throws CourseException
 	{
-		Course course = cDao.findBycName(cname).get(0);
 
-		if (course == null)
+		List<Course> courses = cDao.deleteBycName(cname);
+
+		if (courses.isEmpty())
 		{
-			throw new CourseException("Counsfdfgdsgfhfbdjbf ");
+			throw new CourseException("Course not found");
 		}
 
-		cDao.delete(course);
+		return courses.get(0);
 
-		return course;
+//		Course course = cDao.findBycName(cname).get(0);
+//
+//		if (course == null)
+//		{
+//			throw new CourseException("Course Not FOund ");
+//		}
+//
+//		cDao.delete(course);
+//
+//		return course;
 	}
 
 }
