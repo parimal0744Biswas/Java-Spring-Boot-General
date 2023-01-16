@@ -19,7 +19,8 @@ public class CustomerServiceImpl implements CustomerService
 	@Override
 	public Customer registerCustomer(Customer customer) throws CusromerException
 	{
-		cDao.findById(customer.getCId()).orElseThrow(() -> new CusromerException("Customer already Exists"));
+		// cDao.findById(customer.getCId()).orElseThrow(() -> new
+		// CusromerException("Customer already Exists"));
 
 		return cDao.save(customer);
 

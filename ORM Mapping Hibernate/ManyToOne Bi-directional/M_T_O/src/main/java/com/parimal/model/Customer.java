@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -32,7 +31,7 @@ public class Customer
 	private String cName;
 
 	@JsonIgnore
-	@OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
 	private List<Account> accounts = new ArrayList<>();
 
 }

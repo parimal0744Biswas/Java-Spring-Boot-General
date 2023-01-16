@@ -43,6 +43,7 @@ public class AccountServiceImpl implements AccountService
 				.orElseThrow(() -> new AccountException("No account Found"));
 
 		existAccount.setBankName(account.getBankName());
+		existAccount.setABalance(account.getABalance());
 
 		return aDao.save(existAccount);
 	}
