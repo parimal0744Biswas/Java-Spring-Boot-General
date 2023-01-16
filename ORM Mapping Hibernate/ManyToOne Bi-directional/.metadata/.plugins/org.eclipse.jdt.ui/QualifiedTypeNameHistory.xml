@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
-    <fullyQualifiedTypeName name="com.parimal.model.Student"/>
-    <fullyQualifiedTypeName name="com.parimal.model.Course"/>
-    <fullyQualifiedTypeName name="com.parimal.model.Customer"/>
-    <fullyQualifiedTypeName name="springfox.documentation.swagger2.annotations.EnableSwagger2"/>
-</qualifiedTypeNameHistroy>
