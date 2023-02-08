@@ -1,7 +1,6 @@
 package com.parimal.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.parimal.exception.StudentException;
 import com.parimal.model.Course;
 import com.parimal.model.Student;
+import com.parimal.repository.CourseDao;
 import com.parimal.repository.StudentDao;
 
 @Service
@@ -17,6 +17,9 @@ public class StudentServiceImpl implements StudentService
 
 	@Autowired
 	private StudentDao sDao;
+
+	@Autowired
+	private CourseDao cDao;
 
 	@Override
 	public List<Student> getallStudent() throws StudentException
@@ -28,17 +31,10 @@ public class StudentServiceImpl implements StudentService
 	@Override
 	public String addStudent(Student student) throws StudentException
 	{
-		List<Student> alreadyStudent = sDao.findAll().stream().filter(s -> s.getSName().equals(student.getSName()))
-				.collect(Collectors.toList());
+//		List<Student> alreadyStudent = sDao.findAll().stream().filter(s -> s.getSName().equals(student.getSName()))
+//				.collect(Collectors.toList());
 
-		if (alreadyStudent.size() == 0)
-		{
-			return sDao.save(student).getSName() + " Added Sussfully....";
-		}
-		else
-		{
-			throw new StudentException("Student alreafy found...");
-		}
+		return sDao.save(student).getSName() + " Added Sussfully....";
 
 	}
 
@@ -65,10 +61,15 @@ public class StudentServiceImpl implements StudentService
 	}
 
 	@Override
-	public List<Course> enrollCourse(String cname) throws StudentException
+	public List<Course> enrollCourse(String cname, Integer studentId) throws StudentException
 	{
 		// TODO Auto-generated method stub
-		return null;
+		List<Course> courses = cDao.findBycName(cname);
+
+		Student student = sDao.findById(studentId).orElseThrow(() -> new StudentException("Not found"));
+		student.getCourses().add(courses.get(0));
+		sDao.save(student);
+		return student.getCourses();
 	}
 
 }

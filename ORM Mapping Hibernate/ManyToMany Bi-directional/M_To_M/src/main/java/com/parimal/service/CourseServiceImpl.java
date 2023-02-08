@@ -1,19 +1,25 @@
 package com.parimal.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.parimal.exception.CourseException;
 import com.parimal.model.Course;
+import com.parimal.model.Student;
 import com.parimal.repository.CourseDao;
+import com.parimal.repository.StudentDao;
 
 @Service
 public class CourseServiceImpl implements CourseService
 {
 	@Autowired
 	private CourseDao cDao;
+
+	@Autowired
+	private StudentDao sDao;
 
 	@Override
 	public List<Course> getallCourse() throws CourseException
@@ -46,25 +52,22 @@ public class CourseServiceImpl implements CourseService
 	public Course deleteCourse(String cname) throws CourseException
 	{
 
-		List<Course> courses = cDao.deleteBycName(cname);
+		Course course = cDao.findBycName(cname).get(0);
 
-		if (courses.isEmpty())
+		if (course == null)
 		{
-			throw new CourseException("Course not found");
+			throw new CourseException("Course Not FOund ");
 		}
 
-		return courses.get(0);
+		List<Student> allStudents = sDao.findAll();
+		allStudents = allStudents.stream().filter(s -> s.getCourses().removeIf(c -> c.getCId() == course.getCId()))
+				.collect(Collectors.toList());
 
-//		Course course = cDao.findBycName(cname).get(0);
-//
-//		if (course == null)
-//		{
-//			throw new CourseException("Course Not FOund ");
-//		}
-//
-//		cDao.delete(course);
-//
-//		return course;
+		cDao.deleteById(course.getCId());
+
+		sDao.saveAll(allStudents);
+
+		return course;
 	}
 
 }

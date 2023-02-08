@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,7 +34,8 @@ public class Student
 
 	private String sPassword;
 
+	@JsonIgnore
 	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-	private List<Course> courses = new ArrayList<>();
+	private List<Course> courses = new ArrayList<>(); //
 
 }

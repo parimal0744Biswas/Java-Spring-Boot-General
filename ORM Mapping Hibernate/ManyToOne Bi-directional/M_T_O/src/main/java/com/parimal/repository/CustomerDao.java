@@ -8,5 +8,6 @@ import com.parimal.model.Customer;
 @Repository
 public interface CustomerDao extends JpaRepository<Customer, Integer>
 {
+	
 
 }

@@ -9,11 +9,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.parimal.exception.StudentException;
+import com.parimal.model.Course;
 import com.parimal.model.Student;
 import com.parimal.service.StudentService;
 
@@ -36,7 +38,7 @@ public class StudentController
 		return new ResponseEntity<String>(sService.addStudent(student), HttpStatus.CREATED);
 	}
 
-	@PostMapping("/update")
+	@PutMapping("/update")
 	public ResponseEntity<Student> updateCourse(@RequestBody Student student) throws StudentException
 	{
 		return new ResponseEntity<Student>(sService.updateStudent(student), HttpStatus.ACCEPTED);
@@ -47,5 +49,13 @@ public class StudentController
 	{
 		return new ResponseEntity<Student>(sService.deleteStudent(sId), HttpStatus.ACCEPTED);
 	}
+
+	@PostMapping("/update/{coursename}/{studentid}")
+	public ResponseEntity<List<Course>> enrollToCourse(@PathVariable("coursename") String coursename,
+			@PathVariable("studentid") Integer studentId) throws StudentException
+	{
+		return new ResponseEntity<List<Course>>(sService.enrollCourse(coursename, studentId), HttpStatus.ACCEPTED);
+	}
+	// enrollCourse
 
 }

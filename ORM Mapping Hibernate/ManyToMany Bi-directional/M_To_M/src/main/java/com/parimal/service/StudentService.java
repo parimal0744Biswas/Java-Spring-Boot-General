@@ -20,5 +20,5 @@ public interface StudentService
 
 	public Student deleteStudent(Integer sId) throws StudentException;
 
-	public List<Course> enrollCourse(String cname) throws StudentException;
+	public List<Course> enrollCourse(String cname, Integer studentId) throws StudentException;
 }
